@@ -1,0 +1,16 @@
+// RSA Keys
+openssl genrsa -out private.key.rsa.1 2048
+openssl genrsa -out private.key.rsa.2 2048
+
+openssl rsa -in private.key.rsa.1 -outform PEM -pubout -out public.key.rsa.1
+openssl rsa -in private.key.rsa.2 -outform PEM -pubout -out public.key.rsa.2
+
+// Elliptic Curve Keys
+openssl ecparam -list_curves
+openssl ecparam -name prime256v1 -genkey -noout -out private.key.ec256.1
+openssl ecparam -name secp384r1 -genkey -noout -out private.key.ec384.1
+openssl ecparam -name secp521r1 -genkey -noout -out private.key.ec521.1
+
+openssl ec -in private.key.ec256.1 -pubout -out public.key.ec256.1
+openssl ec -in private.key.ec384.1 -pubout -out public.key.ec384.1
+openssl ec -in private.key.ec521.1 -pubout -out public.key.ec521.1
